@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+service BoardService {
+    rpc GetBoardBaseInfos (Empty) returns (BoardBaseInfoList) {}
+    rpc GetBoardDetail (BoardRequestSeq) returns (Board) {}
+    rpc InsertBoard (Board) returns (Board) {}
+    rpc UpdateBoard (Board) returns (Board) {}
+    rpc RemoveBoard (BoardRequestSeq) returns (Empty) {}
+}
+
+message Empty {}
+
+message Board {
+    int32 seq = 1;
+    string title = 2;
+    string content = 3;
+}
+message BoardBaseInfo {
+    int32 seq = 1;
+    string title = 2;
+}
+message BoardBaseInfoList{
+    repeated BoardBaseInfo boardBaseInfos = 1;
+}
+message BoardRequestSeq {
+    int32 seq = 1;
+}
